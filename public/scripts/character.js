@@ -1,27 +1,45 @@
-class Character {
-    constructor(image) {
-        this.image = image
-        this.array = [[0, 0], [220, 0], [440, 0], [660, 0], [0, 270], [220, 270], [440, 270], [660, 270], [0, 540], [220, 540], [440, 540], [660, 540],  [0, 810], [220, 810], [440, 810], [660, 810]]
+class Character extends Animation {
+    constructor(array, image, positionX, widthX, heightY, sizeX, sizeY) {
+        super(array, image, positionX, widthX, heightY, sizeX, sizeY)
 
-        this.arratPoint = 0
+        this.yBase = height - this.heightY
+        this.positionY = this.yBase
+        this.gravity = 4
+        this.jumpSpeed = 0
+        this.qtdJump = 2
     }
 
-    show() {
-        const characterPositionX = 70
-        const characterPositionY = 150
-        const characterSizeX = 220
-        const characterSizeY = 270
-
-        // Renderiza o personagem
-        image(this.image, characterPositionX, height - characterPositionY, 110, 135, this.array[this.arratPoint][0], this.array[this.arratPoint][1], characterSizeX, characterSizeY)
-
-        this.animete()
+    jump() {
+        if(this.qtdJump > 0) {
+            this.jumpSpeed = -30
+            this.qtdJump--
+            jumpSong.play()
+        }
     }
 
-    animete() {
-        this.arratPoint++
- 
-        // Retorna para o primeiro personagem
-        this.arratPoint >= this.array.length - 1 ? this.arratPoint = 0 : 0
+    addGravity() {
+        this.positionY = this.positionY + this.jumpSpeed
+        this.jumpSpeed = this.jumpSpeed + this.gravity
+
+        if(this.positionY > this.yBase) {
+            this.positionY = this.yBase
+            this.qtdJump = 2            
+        }
+    }
+
+    isColliding(enemy) {
+        const precision = .7
+        const colliding = collideRectRect(
+            this.positionX, 
+            this.positionY, 
+            this.widthX * precision, 
+            this.heightY * precision, 
+            enemy.positionX, 
+            enemy.positionY, 
+            enemy.widthX * precision, 
+            enemy.heightY * precision
+        )
+        
+        return colliding
     }
 }
