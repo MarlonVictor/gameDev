@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="public/styles/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    <link rel="icon" href="https://image.flaticon.com/icons/svg/1234/1234874.svg">
+    <title>WitchAdventure</title>
+</head>
+
+<body>
+    <script src="./public/scripts/animation.js"></script>
+    <script src="./public/scripts/background.js"></script>
+    <script src="./public/scripts/character.js"></script>
+    <script src="./public/scripts/enemy.js"></script>
+    <script src="./public/scripts/score.js"></script>
+    <script src="main.js"></script>
+
+    <section id="game-over">
+        <img src="/public/assets/images/game-over.png">
+        <span id="score"></span>
+        <div class="btns">
+            <button onclick="window.location.href = 'index.html'">Voltar para inicio</button>
+            <button onclick="window.location.reload()">Reiniciar</button>
+        </div>
+    </section>
+</body>
+</html>

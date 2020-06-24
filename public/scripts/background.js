@@ -22,3 +22,15 @@ class Background {
         this.bg2 < -width ? this.bg2 = width : 0
     }
 }
+
+class BackgroundFixed extends Background {
+    constructor(image, speed) {
+        super(image, speed)
+    }
+}
+
+class BackgroundBack extends Background {
+    constructor(image, speed) {
+        super(image, speed)
+    }
+}

@@ -1,8 +1,93 @@
-html, body {
+body {
     margin: 0;
     padding: 0;
 }
 
 canvas {
     display: block;
+}
+
+button {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+    position: relative;
+    outline: none;
+}
+
+#home, #game-over {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s;
+    background-color: rgba(0, 0, 0, 0.733);
+}
+
+#game-over span, #game-over button {
+    color: #f8f9fa;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+#game-over .btns button {
+    background-color: #E45B5B;
+    border: 2px solid #C83E3E;
+    width: 150px;
+    height: 40px;
+}
+
+#game-over .btns button:hover {
+    background-color: #C83E3E;
+}
+
+#home {
+    height: 100vh;
+    background-image: url("https://images5.alphacoders.com/862/thumb-1920-862186.jpg");
+    background-size: cover;
+}
+
+#home h1 {
+    color: #E45B5B;
+    font: 400 60pt 'Piedra';
+    letter-spacing: 4px;
+    position: relative;
+    bottom: 120px;
+    text-shadow: 2px 2px #C83E3E;
+    text-align: center;
+}
+
+#home button {
+    background: transparent;
+    color: #C83E3E;
+    padding: 5px;
+    font: 700 20pt 'Anton';
+    border: none;
+    border-bottom: 2px solid #E45B5B;
+    letter-spacing: 4px;
+    animation-name: slidein;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+#home button:hover {
+    padding: 5px 20px;
+    animation: none;
+    
+}
+
+@keyframes slidein {
+    0% { bottom: 0; }
+    50% { bottom: 10px; }
+    100% { bottom: 0; }
 }

@@ -1,11 +1,12 @@
 class Animation {
-    constructor(array, image, positionX, widthX, heightY, sizeX, sizeY) {
+    constructor(array, image, positionX, variaçãoY, widthX, heightY, sizeX, sizeY) {
         this.array = array
         this.image = image
         this.widthX = widthX
         this.heightY = heightY 
+        this.variaçãoY = variaçãoY
         this.positionX = positionX
-        this.positionY = height - this.heightY 
+        this.positionY = height - this.heightY - this.variaçãoY
         this.sizeX = sizeX
         this.sizeY = sizeY
 

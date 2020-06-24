@@ -1,8 +1,9 @@
 class Character extends Animation {
-    constructor(array, image, positionX, widthX, heightY, sizeX, sizeY) {
-        super(array, image, positionX, widthX, heightY, sizeX, sizeY)
+    constructor(array, image, positionX, variaçãoY, widthX, heightY, sizeX, sizeY) {
+        super(array, image, positionX, variaçãoY, widthX, heightY, sizeX, sizeY)
 
-        this.yBase = height - this.heightY
+        this.variaçãoY = variaçãoY
+        this.yBase = height - this.heightY - this.variaçãoY
         this.positionY = this.yBase
         this.gravity = 4
         this.jumpSpeed = 0
@@ -28,7 +29,7 @@ class Character extends Animation {
     }
 
     isColliding(enemy) {
-        const precision = .7
+        const precision = 0.62
         const colliding = collideRectRect(
             this.positionX, 
             this.positionY, 
