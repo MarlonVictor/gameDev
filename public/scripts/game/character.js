@@ -3,7 +3,7 @@ class Character extends Animation {
         super(array, image, positionX, variaçãoY, widthX, heightY, sizeX, sizeY)
 
         this.variaçãoY = variaçãoY
-        this.yBase = height - this.heightY - this.variaçãoY
+        this.yBase = height - this.heightY - this.variaçãoY 
         this.positionY = this.yBase
         this.gravity = 4
         this.jumpSpeed = 0
@@ -12,7 +12,7 @@ class Character extends Animation {
 
     jump() {
         if(this.qtdJump > 0) {
-            this.jumpSpeed = -30
+            this.jumpSpeed = -33
             this.qtdJump--
             jumpSong.play()
         }

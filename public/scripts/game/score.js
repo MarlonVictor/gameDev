@@ -4,6 +4,7 @@ class Score {
     }
 
     show() {
+        textFont(primaryFont)
         textAlign(RIGHT)
         textSize(30)
         fill('#f8f9fa')
