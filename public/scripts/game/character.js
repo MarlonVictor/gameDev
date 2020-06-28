@@ -5,14 +5,15 @@ class Character extends Animation {
         this.variaçãoY = variaçãoY
         this.yBase = height - this.heightY - this.variaçãoY 
         this.positionY = this.yBase
-        this.gravity = 4
+        this.gravity = 6
         this.jumpSpeed = 0
         this.qtdJump = 2
+        this.invisible = false
     }
 
     jump() {
         if(this.qtdJump > 0) {
-            this.jumpSpeed = -33
+            this.jumpSpeed = -40
             this.qtdJump--
             jumpSong.play()
         }
@@ -28,7 +29,18 @@ class Character extends Animation {
         }
     }
 
+    stayInvisible() {
+        this.invisible = true
+
+        setTimeout(() => {
+            this.invisible = false
+        }, 1000)
+    }
+
     isColliding(enemy) {
+        if(this.invisible)
+            return false
+
         const precision = 0.62
         const colliding = collideRectRect(
             this.positionX, 

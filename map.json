@@ -1,0 +1,22 @@
+{
+    "config": {
+        "max": 3,
+        "initial": 3
+    },
+    "mapa": [{
+        "enemy": 1,
+        "speed": 10
+      },
+      {
+        "enemy": 1,
+        "speed": 30
+      },
+      {
+        "enemy": 1,
+        "speed": 15
+      },
+      {
+        "enemy": 2,
+        "speed": 40
+    }]
+}

@@ -5,11 +5,12 @@ function setup() {
     backgroundFixed = new BackgroundFixed(bgFixed, 0)
     backgroundBack  = new BackgroundBack(bgBack, 3)
     background      = new Background(bgImage, 20)
+    life            = new Life(config.config.max, config.config.initial)
     score           = new Score()
     character       = new Character(arrayCharacter, characterImage, 80, 90, 100, 156, 68, 106)
-    const enemy     = new Enemy(arrayEnemy, enemyImage, width - 52, 100, 52, 52, 104, 104, 30, 1)
+    const enemy     = new Enemy(arrayEnemy, enemyImage, width - 52, 100, 52, 52, 104, 104, 30, 5)
     const troll     = new Enemy(arrayTroll, trollImage, width, 90, 230, 200, 400, 400, 30, 2180)
-    const flying    = new Enemy(arrayFlying, flyingImage, width - 52, 300, 100, 75, 200, 150, 50, 3990)
+    const flying    = new Enemy(arrayFlying, flyingImage, width - 52, 300, 100, 75, 62, 62, 50, 4090)
 
     allEnemies.push(enemy)
     allEnemies.push(troll)
@@ -32,19 +33,26 @@ function draw() {
 
     score.show()
     score.addPoint()
-
+    
+    life.show()
+    
     allEnemies.forEach(enemy => {
         enemy.show()
         enemy.move()
 
         // Game-over
         if(character.isColliding(enemy)) {
-            noLoop()
-            gameSound.stop()
-            document.getElementById('game-over').style.opacity = '1'
-            const msg = document.getElementById('score')
+            life.loseLife()
+            
+            if(life.lifes == 0) {
+                noLoop()
+                gameSound.stop()
+                gameOverSong.play()
+                document.getElementById('game-over').style.opacity = '1'
+                const msg = document.getElementById('score')
 
-            point > 50 ? msg.innerHTML = `Você fez ${point} pontos! ` : msg.innerHTML = `Você fez só ${point} pontos kkkkk`
+                point > 40 ? msg.innerHTML = `Você conseguiu fugir por ${point} metros! ` : msg.innerHTML = `Você sobreviveu só ${point} metros kkkkk`
+            }
         }
     })
 }
